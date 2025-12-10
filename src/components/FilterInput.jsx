@@ -1,14 +1,6 @@
-function FilterInput({ prefix, onPrefixChange }) {
+const FilterInput = () => {
   return (
-    <div className="mb-4">
-      <label className="text-sm font-medium block text-gray-700">Filter prefix</label>
-      <input 
-        value={prefix}
-        onChange={(e) => onPrefixChange(e.target.value)}
-        className="block p-1 border border-gray-300 rounded-sm text-base w-48 focus:outline-none focus:ring-1 focus:ring-blue-500" 
-      />
-    </div>
-  );
+    <div>FilterInput</div>
+  )
 }
-
-export default FilterInput;
+export default FilterInput
