@@ -6,7 +6,7 @@ import NameList from "./components/NameList";
 const initialNames = [
    "Potter, Harry",
    "Granger, Hermione",
-   "Weasley, Ron",
+   "Victor, Krum",
    "Hagrid, Rubeus",
 ];
 
@@ -16,6 +16,7 @@ const App = () => {
    const [prefix, setPrefix] = useState("");
    const [firstName, setFirstName] = useState("");
    const [lastName, setLastName] = useState("");
+   const [searchValue, setSearchValue] = useState("");
 
    const filteredNames = useMemo(() => names.filter((n) => n.toLowerCase().startsWith(prefix.toLowerCase())), [names, prefix])
    const hasValidInput = useMemo(
@@ -66,7 +67,10 @@ const App = () => {
    }, [selected, hasValidInput, firstName, lastName, names])
    return (
       <div className="max-w-2xl mx-auto mt-10 space-y-6 p-5">
-         <FilterInput />
+         <FilterInput 
+            prefix={prefix}
+            onPrefixChange={setPrefix}
+         />
          <NameList
             names={filteredNames}
             selected={selected}
@@ -80,6 +84,8 @@ const App = () => {
             onCreate={create}
             onDelete={del}
             onUpdate={update}
+            searchValue={searchValue}
+            onSearchChange={setSearchValue}
             isValid={hasValidInput}
             hasSelection={selected}
          />
